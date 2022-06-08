@@ -27,7 +27,6 @@ workflows:
       - maven/test
   build-and-deploy:
     jobs:
-      - build
       - deploy:
           requires:
             - build # only deploy once build job has completed
