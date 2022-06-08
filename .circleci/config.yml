@@ -25,5 +25,9 @@ workflows:
   maven_test:
     jobs:
       - maven/test
+  build:
+    jobs:
       - build
+  deploy:
+    jobs:
       - deploy
