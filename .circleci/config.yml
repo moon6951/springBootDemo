@@ -5,8 +5,7 @@ orbs:
 
   jobs:
     build:
-      orbs:
-        maven: circleci/maven@0.0.12
+      name: maven
       deploy-job:
           steps:
             -add_ssh_keys:
