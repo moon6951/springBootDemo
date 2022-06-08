@@ -3,6 +3,8 @@ version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
 
+  ssh-deployment: singularitynet/ssh-deployment@2.4.1
+
 jobs:
         
   deploy:
@@ -24,6 +26,12 @@ workflows:
   maven_test:
     jobs:
       - maven/test
-  deploy:
+  deploy_application:
     jobs:
-      - deploy
+      - ssh-deployment/deploy:
+          ssh-host: 47.93.23.13
+          ssh-user: root
+          git-user: moon6951
+          git-repo: springBootDemo
+          git-branch: master
+          run-command: nohup java -Xmx1024m -Xms256m -jar /root/demo-0.0.1-SNAPSHOT.jar &
