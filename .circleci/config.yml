@@ -4,13 +4,11 @@ orbs:
   maven: circleci/maven@0.0.12
 
   jobs:
-    build:
-      name: maven
-      deploy-job:
-          steps:
-            -add_ssh_keys:
-              fingerprints:
-                -"SHA256:hmJkt5Jka59bJZtkSSGUz1sc3qWFm8rPOkZQkXxXlE4."
+    deploy-job:
+        steps:
+          -add_ssh_keys:
+            fingerprints:
+              -"SHA256:hmJkt5Jka59bJZtkSSGUz1sc3qWFm8rPOkZQkXxXlE4."
     deploy:
       machine:
         enabled: true
@@ -25,9 +23,6 @@ workflows:
   maven_test:
     jobs:
       - maven/test
-  build:
-    jobs:
-      - build
   deploy:
     jobs:
       - deploy
