@@ -17,21 +17,12 @@ jobs:
            - "28:13:c0:41:c6:06:1f:8d:5c:93:8c:ac:29:ae:3c:9d"
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
       - run:
-          #name: Deploy Over SSH
+          name: Deploy Over SSH
           command: |
-            ssh root@47.93.23.13 "<nohup java -Xmx1024m -Xms256m -jar /root/demo-0.0.1-SNAPSHOT.jar &>"
+            ssh root@47.93.23.13 nohup java -Xmx1024m -Xms256m -jar /root/demo-0.0.1-SNAPSHOT.jar &
       
 
 workflows:
   maven_test:
     jobs:
       - maven/test
-  deploy_application:
-    jobs:
-      - ssh-deployment/deploy:
-          ssh-host: 47.93.23.13
-          ssh-user: root
-          git-user: moon6951
-          git-repo: springBootDemo
-          git-branch: master
-          run-command: nohup java -Xmx1024m -Xms256m -jar /root/demo-0.0.1-SNAPSHOT.jar &
