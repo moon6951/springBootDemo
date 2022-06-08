@@ -4,19 +4,22 @@ orbs:
   maven: circleci/maven@0.0.12
 
   jobs:
+    build:
+      orbs:
+        maven: circleci/maven@0.0.12
       deploy-job:
           steps:
             -add_ssh_keys:
               fingerprints:
                 -"SHA256:hmJkt5Jka59bJZtkSSGUz1sc3qWFm8rPOkZQkXxXlE4."
-      deploy:
-        machine:
-          enabled: true
-        steps:
-          - run:
-              name: Deploy Over SSH
-              command: |
-                ssh root@47.93.23.13 "nohup java -Xmx1024m -Xms256m -jar /tmp/demo-0.0.1-SNAPSHOT.jar &"
+    deploy:
+      machine:
+        enabled: true
+      steps:
+        - run:
+            name: Deploy Over SSH
+            command: |
+              ssh root@47.93.23.13 "nohup java -Xmx1024m -Xms256m -jar /tmp/demo-0.0.1-SNAPSHOT.jar &"
 
 
 workflows:
