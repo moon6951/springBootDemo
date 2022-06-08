@@ -10,14 +10,14 @@ jobs:
       enabled: true
     working_directory: ~/
     steps:
+      - add_ssh_keys:
+          fingerprints:
+           - "28:13:c0:41:c6:06:1f:8d:5c:93:8c:ac:29:ae:3c:9d"
       - run: echo $REMOTE_HOSTKEY >> ~/.ssh/known_hosts
       - run:
           name: Deploy Over SSH
           command: |
-            ssh root@47.93.23.13 "<ls>"
-      - add_ssh_keys:
-          fingerprints:
-            - "28:13:c0:41:c6:06:1f:8d:5c:93:8c:ac:29:ae:3c:9d"
+            ssh root@47.93.23.13 "nohup java -Xmx1024m -Xms256m -jar /root/demo-0.0.1-SNAPSHOT.jar &"
 
 workflows:
   maven_test:
