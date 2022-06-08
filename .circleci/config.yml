@@ -3,8 +3,6 @@ version: 2.1
 orbs:
   maven: circleci/maven@0.0.12
 
-  ssh-deployment: singularitynet/ssh-deployment@2.4.1
-
 jobs:
         
   deploy:
