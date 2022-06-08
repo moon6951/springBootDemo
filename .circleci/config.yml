@@ -10,6 +10,7 @@ orbs:
             fingerprints:
               -"SHA256:hmJkt5Jka59bJZtkSSGUz1sc3qWFm8rPOkZQkXxXlE4."
     deploy:
+      name: deploy
       machine:
         enabled: true
       steps:
