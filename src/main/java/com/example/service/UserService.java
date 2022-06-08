@@ -15,4 +15,5 @@ public class UserService {
     public List<TUser> queryAll() {
         return userDao.queryAll();
     }
+
 }
