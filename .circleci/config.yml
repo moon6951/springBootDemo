@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh root@47.93.23.13 ls
+            ssh root@47.93.23.13 "ls"
       - add_ssh_keys:
           fingerprints:
             - "28:13:c0:41:c6:06:1f:8d:5c:93:8c:ac:29:ae:3c:9d"
